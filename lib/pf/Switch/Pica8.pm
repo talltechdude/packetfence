@@ -80,11 +80,11 @@ use pf::SwitchSupports qw(
     ExternalPortal
 );
 
-=item setAdminStatus - bounce host port with radius CoA technique
+=item bouncePortRadius - bounce host port with radius CoA technique
 
 =cut
 
-sub setAdminStatus {
+sub bouncePortRadius {
     my ( $self, $ifIndex, $status) = @_;
     my $logger = $self->logger;
 
@@ -160,9 +160,7 @@ Usually used to force the operating system to do a new DHCP Request after a VLAN
 sub bouncePort {
     my ($self, $ifIndex, $mac) = @_;
 
-    $self->setAdminStatus( $ifIndex, undef, $mac );
-
-    return $TRUE;
+    return $self->bouncePortRadius( $ifIndex, $mac );
 }
 
 =head2 deauthenticateMacRadius
