@@ -85,7 +85,7 @@ use pf::SwitchSupports qw(
 =cut
 
 sub setAdminStatus {
-    my ( $self, $ifIndex, $status, $mac ) = @_;
+    my ( $self, $ifIndex, $status) = @_;
     my $logger = $self->logger;
 
     if ( !$self->isProductionMode() ) {
