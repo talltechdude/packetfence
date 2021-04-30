@@ -31,6 +31,7 @@ export {
   BaseFormGroupToggleDisabledEnabled  as FormGroupLocationlogCloseOnAccountingStop,
   BaseFormGroupToggleDisabledEnabled  as FormGroupMultihost,
   BaseFormGroupToggleDisabledEnabled  as FormGroupNetflowOnAllNetworks,
+  BaseFormGroupToggleDisabledEnabled  as FormGroupNetflowKernelModule,
   BaseFormGroupOpenidAttributes       as FormGroupOpenidAttributes,
   BaseFormGroupInputNumber            as FormGroupPffilterProcesses,
   BaseFormGroupInputNumber            as FormGroupPfperlApiProcesses,
