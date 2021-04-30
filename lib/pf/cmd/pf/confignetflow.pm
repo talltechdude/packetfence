@@ -39,7 +39,9 @@ if ($os eq 'rhel') {
 }
 
 sub _run {
-    if (!netflow_enabled()) {
+    my $logger = get_logger();
+    if (!netflow_enabled() || isdisabled($Config{advanced}{netflow_kernel_module})) {
+        $logger->info("netflow is disabled or the netflow kernel module is disabled");
         return 0;
     }
 
@@ -55,8 +57,10 @@ sub _run {
     if ($child_exit_status) {
         my $error = <$stderr>;
         $error .= "kernel module ipt_NETFLOW is not configured or loaded";
-        get_logger()->error($error);
+        $logger->error($error);
         print STDERR "${error}\n";
+    } else {
+        $logger->info("the netflow kernel module is loaded");
     }
 
     close $stderr;
