@@ -35,6 +35,8 @@ use pf::config qw (
     $WEBAUTH_WIRELESS
     $WIRELESS_MAC_AUTH
     %connection_type_to_str
+    $WIRED_802_1X
+    $WIRED_MAC_AUTH
 );
 use pf::util::radius qw(perform_disconnect);
 use pf::log;
@@ -46,6 +48,8 @@ sub description { 'Ruckus SmartZone Wireless Controllers' }
 use pf::SwitchSupports qw(
     WirelessMacAuth
     -WebFormRegistration
+    WiredMacAuth
+    WirelessDot1x
 );
 
 =over
@@ -368,6 +372,43 @@ sub check_if_radius_request_psk_matches {
       ),      
       pack("H*", pf::util::wpa::strip_hex_prefix($radius_request->{"Ruckus-DPSK-EAPOL-Key-Frame"})),
     );
+}
+
+=head2 wiredeauthTechniques
+
+Return the reference to the deauth technique or the default deauth technique.
+
+=cut
+
+sub wiredeauthTechniques {
+   my ($self, $method, $connection_type) = @_;
+   my $logger = $self->logger;
+
+    if ($connection_type == $WIRED_802_1X) {
+        my $default = $SNMP::RADIUS;
+        my %tech = (
+            $SNMP::RADIUS => 'deauthenticateMacDefault',
+        );
+
+        if (!defined($method) || !defined($tech{$method})) {
+            $method = $default;
+        }
+        return $method,$tech{$method};
+    }
+    elsif ($connection_type == $WIRED_MAC_AUTH) {
+        my $default = $SNMP::RADIUS;
+        my %tech = (
+            $SNMP::RADIUS => 'deauthenticateMacDefault',
+        );
+        if (!defined($method) || !defined($tech{$method})) {
+            $method = $default;
+        }
+        return $method,$tech{$method};
+    }
+    else{
+        $logger->error("This authentication mode is not supported");
+    }
+
 }
 
 =back
