@@ -43,6 +43,7 @@ our @LOCATION_LOG_GETTERS = qw(
   last_start_timestamp
 );
 
+our $TRIGGER_NODE_DISCOVERED = undef;
 use Class::XSAccessor {
     accessors => [qw(category bypass_role)],
 # The getters for current location log entries
@@ -97,6 +98,10 @@ sub pre_save {
 
 sub after_create_hook {
     my ($self) = @_;
+    if (!$TRIGGER_NODE_DISCOVERED) {
+        return;
+    }
+
     my $apiclient = pf::api::queue->new(queue => 'general');
     eval {
         $apiclient->notify_delayed($NODE_DISCOVERED_TRIGGER_DELAY, "trigger_security_event", mac => $self->{mac}, type => "internal", tid => "node_discovered");
