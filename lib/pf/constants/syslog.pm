@@ -113,6 +113,7 @@ our @SyslogInfo = (
             '($programname == "pfhttpd" and not $msg contains "GET /api/v1/logs/tail/")',
             '$programname == "pfipset"',
             '$programname == "pfpki"',
+            '$programname == "pfldapexplorer"',
         ]
     },
     {

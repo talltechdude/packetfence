@@ -52,6 +52,11 @@
   proxy /api/v1/pki/ 127.0.0.1:22225 {
     transparent
   }
+
+  # pfldapexplorer API access
+  proxy /api/v1/ldap/ 127.0.0.1:22226 {
+    transparent
+  }
   
   # Everything else goes to the Perl API
   proxy /api/v1/ 127.0.0.1:22224 {
