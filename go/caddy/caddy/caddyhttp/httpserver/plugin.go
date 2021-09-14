@@ -728,6 +728,7 @@ var directives = []string{
 	"pfsso",
 	"pfipset",
 	"pfpki",
+	"pfldapexplorer",
 	"httpdispatcher",
 	"httpdportalpreview",
 }
