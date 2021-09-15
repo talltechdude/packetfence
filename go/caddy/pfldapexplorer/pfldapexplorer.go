@@ -168,11 +168,10 @@ func (h *Handler) search(ldapInfo *Search, res http.ResponseWriter, req *http.Re
 		log.LoggerWContext(*h.Ctx).Error("Failed Search : " + err.Error())
 	}
 
-	raw, err := json.MarshalIndent(transform(response.Entries), "", "  ")
+	_, err = json.MarshalIndent(transform(response.Entries), "", "  ")
 	if err != nil {
 		log.LoggerWContext(*h.Ctx).Error("Cannot unmarshall: " + err.Error())
 	}
-	fmt.Println(string(raw))
 
 	res.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	res.WriteHeader(http.StatusOK)
