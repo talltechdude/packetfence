@@ -1621,7 +1621,7 @@ packetfence-set-realm {
         }
     }
     
-    switch "%{control:PacketFence-Tenant-Id}" {
+    switch &control:PacketFence-Tenant-Id {
 
 EOT
 
