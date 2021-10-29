@@ -859,11 +859,7 @@ sub generate_radiusd_proxy {
                 my $options = $key->{$realm}->{'options'} || '';
                 my $real_realm;
                 my $realm_tenant = $realm."-".%{$tenant_hash}{$tenant}->{name};
-                if (defined $key->{$realm}->{'regex'} && $key->{$realm}->{'regex'} ne '') {
-                    $real_realm = "\"~".$key->{$realm}->{'regex'}."\"";
-                } else {
-                    $real_realm = $realm."-".%{$tenant_hash}{$tenant}->{name};
-                }
+                $real_realm = $realm."-".%{$tenant_hash}{$tenant}->{name};
                 $tags{'config'} .= <<"EOT";
 realm $real_realm {
 $options
@@ -1601,14 +1597,6 @@ sub generate_multi_domain_constants {
 }
 
 sub generate_radiusd_realm_policy {
-    my ($self) = @_;
-    my %tags;
-
-    parse_template( \%tags, "$conf_dir/radiusd/realm_policy.conf", "$install_dir/raddb/policy.d/realm_policy" );
-}
-
-
-sub generate_radiusd_realm_policy {
     my ($self, $tt) = @_;
     my $logger = get_logger;
 
@@ -1640,13 +1628,13 @@ EOT
     my $tenant_hash = tenant_hash();
     foreach my $tenant ( keys %{$tenant_hash} ) {
         next if $tenant eq 0;
-
+        my $tenantName = %{$tenant_hash}{$tenant}->{name};
 $tags{'config'} .= <<"EOT";
         case $tenant {
 
             if ("%{%{control:Tmp-String-4}:-0}" == 0) {
                 update {
-                    &request:Realm = "null$tenant"
+                    &request:Realm = "null-$tenantName"
                 }
             } else {
 EOT
@@ -1666,7 +1654,7 @@ EOT
                 $tags{'config'} .= <<"EOT";
                 $if (%{control:Tmp-String-4} =~ /$realRealm/i) {
                     update {
-                        &request:Realm = "$realm$tenant"
+                        &request:Realm = "$realm-$tenantName"
                     }
 EOT
                 $if = "} elsif";
@@ -1676,17 +1664,17 @@ EOT
 $tags{'config'} .= <<"EOT";
                 } else {
                     update {
-                        &request:Realm = "default$tenant"
+                        &request:Realm = "default-$tenantName"
                     }
                 }
 EOT
         } else {
 $tags{'config'} .= <<"EOT";
                 update {
-                    &request:Realm = "default$tenant"
+                    &request:Realm = "default-$tenantName"
                 }
 EOT
-        }
+	}
 $tags{'config'} .= <<"EOT";
             }
         }
@@ -1698,6 +1686,7 @@ $tags{'config'} .= <<"EOT";
 EOT
     $tt->process("$conf_dir/radiusd/realm_policy.conf", \%tags, "$install_dir/raddb/policy.d/realm_policy") or die $tt->error();
 }
+
 
 =head1 AUTHOR
 
