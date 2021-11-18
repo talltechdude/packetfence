@@ -176,7 +176,7 @@ wireless_dot1x_eap_peap.sources.ad_machine.access_duration: '{{.access_duration.
 # Connection profiles
 wireless_dot1x_eap_peap.profiles.wireless.id: catch_dot1x_wireless_eap_peap_mschapv2
 wireless_dot1x_eap_peap.profiles.wireless.description: 802.1X wireless EAP-PEAP-MSCHAPv2
-wireless_dot1x_eap_peap.profiles.wireless.filters.connection_type: Wireless-802.11-EAP 
+wireless_dot1x_eap_peap.profiles.wireless.filters.connection_type: Wireless-802.11-EAP
 wireless_dot1x_eap_peap.profiles.wireless.filters.connection_sub_type: MS-EAP-Authentication
 wireless_dot1x_eap_peap.profiles.wireless.unreg_on_acct_stop: enabled
 
@@ -470,3 +470,28 @@ pfdhcplistener_multi_tenant.nodes.node11.dhcp_vendor: test
 # need to be a network not already attached to PacketFence server
 pfdhcplistener_multi_tenant.nodes.node11.dhcp_server: 10.10.10.1
 
+
+################################################################################
+## firewall_sso test suite specific variables
+#################################################################################
+# Roles
+firewall_sso.roles.headless_device.id: 'firewall_sso'
+firewall_sso.roles.headless_device.notes: '{{.mac_auth.roles.headless_device.notes}}'
+firewall_sso.roles.headless_device.vlan_id: '{{.mac_auth.roles.headless_device.vlan_id}}'
+
+# Connection profiles
+firewall_sso.profiles.wired.id: catch_firewall_sso_authentication
+firewall_sso.profiles.wired.description: Firewall SSO authentication
+firewall_sso.profiles.wired.filters.connection_type: Ethernet-NoEAP
+firewall_sso.profiles.wired.unreg_on_acct_stop: disabled
+
+# Firewall
+firewall_sso.firewall.host: '{{.pfserver_mgmt_ip}}'
+firewall_sso.firewall.port: 8080
+firewall_sso.firewall.port_config: 8081
+firewall_sso.firewall.transport: http
+firewall_sso.firewall.password: secret
+firewall_sso.firewall.type: PaloAlto
+
+# Smocker
+smocker_dir: /opt/smocker
