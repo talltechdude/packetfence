@@ -47,6 +47,10 @@ DELIMITER ;
 call ValidateVersion;
 DROP PROCEDURE IF EXISTS ValidateVersion;
 
+\! echo "Adding index to bandwidth_accounting"
+ALTER TABLE `bandwidth_accounting`
+  DROP INDEX IF EXISTS bandwidth_last_updated_source_type,
+  ADD INDEX IF NOT EXISTS  bandwidth_last_updated_source_type_time_bucket (last_updated, source_type, time_bucket);
 
 \! echo "Incrementing PacketFence schema version...";
 INSERT IGNORE INTO pf_version (id, version, created_at) VALUES (@VERSION_INT, CONCAT_WS('.', @MAJOR_VERSION, @MINOR_VERSION), NOW());
