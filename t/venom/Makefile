@@ -130,6 +130,12 @@ inline_deb11:
 	SCENARIOS_TO_RUN=inline \
 	$(MAKE_TARGET)
 
+inline_el8:
+	make \
+	PF_VM_NAME=pfel8$(DEV_ENV) \
+	SCENARIOS_TO_RUN=inline \
+	$(MAKE_TARGET)
+
 example_el8:
 	make \
 	PF_VM_NAME=pfel8$(DEV_ENV) \
