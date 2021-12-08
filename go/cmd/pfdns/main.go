@@ -6,6 +6,7 @@ import (
         "github.com/coredns/coredns/core/dnsserver"
         _ "github.com/coredns/coredns/core/plugin"
 	    _ "github.com/inverse-inc/packetfence/go/coredns_pfdns"
+	    _ "github.com/inverse-inc/packetfence/go/coredns_logger"
 )
 
 func init() {
@@ -16,9 +17,10 @@ func init() {
 				break
 			}
 		}
-        temp := make([]string, 0, len(dnsserver.Directives) + 1)
+
+        temp := make([]string, 0, len(dnsserver.Directives) + 2)
         temp = append(temp, dnsserver.Directives[:i]...)
-        temp = append(temp, "pfdns")
+        temp = append(temp, "logger", "pfdns")
         temp = append(temp, dnsserver.Directives[i:]...)
         dnsserver.Directives = temp
 }
