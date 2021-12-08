@@ -3,23 +3,23 @@ module github.com/inverse-inc/packetfence/go
 go 1.16
 
 require (
-	github.com/Azure/azure-sdk-for-go v40.6.0+incompatible
-	github.com/Azure/go-autorest/autorest v0.11.10
-	github.com/Azure/go-autorest/autorest/adal v0.9.5
-	github.com/Azure/go-autorest/autorest/azure/auth v0.5.3
-	github.com/Azure/go-autorest/autorest/to v0.2.0 // indirect
-	github.com/DataDog/datadog-go v3.5.0+incompatible // indirect
+	github.com/Azure/azure-sdk-for-go v53.3.0+incompatible
+	github.com/Azure/go-autorest/autorest v0.11.21
+	github.com/Azure/go-autorest/autorest/adal v0.9.14
+	github.com/Azure/go-autorest/autorest/azure/auth v0.5.8
 	github.com/DataDog/zstd v1.4.5 // indirect
 	github.com/OneOfOne/xxhash v1.2.7
 	github.com/Sereal/Sereal v0.0.0-20200729022450-08708a3c86f3
-	github.com/aws/aws-sdk-go v1.35.9
+	github.com/aws/aws-sdk-go v1.40.54
 	github.com/captncraig/cors v0.0.0-20170507232344-153f484dcf3d
 	github.com/cenkalti/backoff/v4 v4.1.0
 	github.com/cheekybits/genny v1.0.0 // indirect
-	github.com/coredns/caddy v1.1.0
+	github.com/coredns/caddy v1.1.1
+	github.com/coredns/coredns v1.8.6
+	github.com/coredns/example v0.0.0-20200925060636-a998e071a3a3
 	github.com/coreos/go-systemd v0.0.0-20190719114852-fd7a80b32e1f
 	github.com/davecgh/go-spew v1.1.1
-	github.com/dnstap/golang-dnstap v0.2.2
+	github.com/dnstap/golang-dnstap v0.4.0
 	github.com/dustin/go-humanize v1.0.0
 	github.com/farsightsec/golang-framestream v0.3.0
 	github.com/fdurand/arp v0.0.0-20180807174648-27b38d3af1be
@@ -33,22 +33,20 @@ require (
 	github.com/go-redis/redis v0.0.0-20190325112110-a679e614427a
 	github.com/go-sql-driver/mysql v1.5.0
 	github.com/goji/httpauth v0.0.0-20160601135302-2da839ab0f4d
-	github.com/golang/protobuf v1.4.3
-	github.com/golang/snappy v0.0.1 // indirect
-	github.com/google/go-cmp v0.4.0
-	github.com/google/uuid v1.1.1
+	github.com/golang/protobuf v1.5.2
+	github.com/google/go-cmp v0.5.6
+	github.com/google/uuid v1.1.2
 	github.com/gorilla/mux v1.7.3
 	github.com/gorilla/rpc v0.0.0-20160927134711-22c016f3df3f
 	github.com/gorilla/schema v1.1.0
-	github.com/gorilla/websocket v1.4.1
+	github.com/gorilla/websocket v1.4.2
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645
 	github.com/hanwen/go-fuse/v2 v2.0.3
 	github.com/hashicorp/go-syslog v1.0.0
 	github.com/hashicorp/golang-lru v0.5.4 // indirect
 	github.com/hpcloud/tail v1.0.0
-	github.com/imdario/mergo v0.3.9 // indirect
 	github.com/inconshreveable/log15 v0.0.0-20171019012758-0decfc6c20d9
-	github.com/infobloxopen/go-trees v0.0.0-20190313150506-2af4e13f9062
+	github.com/infobloxopen/go-trees v0.0.0-20200715205103-96a057b8dfb9
 	github.com/inverse-inc/dhcp4 v0.0.0-20200625173842-2c4d1e50d7ca
 	github.com/inverse-inc/go-ipset/v2 v2.2.4
 	github.com/inverse-inc/go-radius v0.0.0-20201019132414-82756e2d8d47
@@ -66,7 +64,7 @@ require (
 	github.com/mdlayher/ethernet v0.0.0-20170707213343-e72cf8343052
 	github.com/mdlayher/raw v0.0.0-20171214195253-9df8b4265df2
 	github.com/mediocregopher/radix.v2 v0.0.0-20180603022615-94360be26253
-	github.com/miekg/dns v1.1.34
+	github.com/miekg/dns v1.1.43
 	github.com/naoina/go-stringutil v0.1.0 // indirect
 	github.com/naoina/toml v0.1.1
 	github.com/nu7hatch/gouuid v0.0.0-20131221200532-179d4d0c4d8d
@@ -75,22 +73,21 @@ require (
 	github.com/openzipkin-contrib/zipkin-go-opentracing v0.4.5
 	github.com/openzipkin/zipkin-go v0.2.2
 	github.com/patrickmn/go-cache v2.1.0+incompatible
-	github.com/philhofer/fwd v1.0.0 // indirect
-	github.com/prometheus/client_golang v1.8.0
+	github.com/prometheus/client_golang v1.11.0
 	github.com/prometheus/client_model v0.2.0
-	github.com/prometheus/common v0.14.0
+	github.com/prometheus/common v0.31.1
 	github.com/robfig/cron/v3 v3.0.1
 	github.com/russross/blackfriday v1.5.2
 	github.com/simon/go-netadv v0.0.0-20170602081515-fe67988531c7
 	github.com/sparrc/go-ping v0.0.0-20190613174326-4e5b6552494c
 	github.com/ti-mo/netfilter v0.2.0
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519
-	golang.org/x/net v0.0.0-20210415231046-e915ea6b2b7d
-	golang.org/x/sys v0.0.0-20210615035016-665e8c7367d1
+	golang.org/x/net v0.0.0-20210614182718-04defd469f4e
+	golang.org/x/sys v0.0.0-20210917161153-d61c044b1678
 	golang.org/x/text v0.3.6
-	google.golang.org/api v0.29.0
-	google.golang.org/grpc v1.29.1
-	gopkg.in/DataDog/dd-trace-go.v1 v1.27.1
+	google.golang.org/api v0.58.0
+	google.golang.org/grpc v1.41.0
+	gopkg.in/DataDog/dd-trace-go.v1 v1.33.0
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 	gopkg.in/alexcesaro/statsd.v2 v2.0.0-20160320182110-7fea3f0d2fab
 	gopkg.in/asn1-ber.v1 v1.0.0-20181015200546-f715ec2f112d // indirect
@@ -98,10 +95,10 @@ require (
 	gopkg.in/ldap.v2 v2.0.0-20171123045618-bb7a9ca6e4fb
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0
 	gopkg.in/square/go-jose.v2 v2.3.1 // indirect
-	gopkg.in/yaml.v2 v2.3.0
-	k8s.io/api v0.19.2
-	k8s.io/apimachinery v0.19.2
-	k8s.io/client-go v0.19.2
+	gopkg.in/yaml.v2 v2.4.0
+	k8s.io/api v0.22.2
+	k8s.io/apimachinery v0.22.2
+	k8s.io/client-go v0.22.2
 	k8s.io/klog v1.0.0
 	software.sslmate.com/src/go-pkcs12 v0.0.0-20190322163127-6e380ad96778
 )

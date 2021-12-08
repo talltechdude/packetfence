@@ -7,8 +7,9 @@ import (
 	"time"
 
 	"github.com/coredns/caddy"
-	"github.com/inverse-inc/packetfence/go/coredns/core/dnsserver"
-	"github.com/inverse-inc/packetfence/go/coredns/plugin"
+    "github.com/coredns/coredns/core/dnsserver"
+    "github.com/coredns/coredns/plugin"
+
 	"github.com/inverse-inc/packetfence/go/pfconfigdriver"
 	"github.com/inverse-inc/packetfence/go/timedlock"
 	"github.com/inverse-inc/packetfence/go/unifiedapiclient"

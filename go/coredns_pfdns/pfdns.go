@@ -18,8 +18,8 @@ import (
 	"time"
 
 	"github.com/inverse-inc/go-utils/sharedutils"
-	"github.com/inverse-inc/packetfence/go/coredns/plugin"
-	"github.com/inverse-inc/packetfence/go/coredns/request"
+    "github.com/coredns/coredns/request"
+    "github.com/coredns/coredns/plugin"
 	"github.com/inverse-inc/packetfence/go/db"
 	"github.com/inverse-inc/packetfence/go/filter_client"
 	"github.com/inverse-inc/packetfence/go/unifiedapiclient"
