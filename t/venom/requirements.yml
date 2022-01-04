@@ -10,8 +10,8 @@ roles:
   #   version: feature/priority
 
 collections:
-  - name: inverse_inc.packetfence
-    version: 1.2.1-2
+  # - name: inverse_inc.packetfence
+  #   version: 1.2.1-2
   - name: debops.debops
     version: 2.3.2
   - name: inverse_inc.windows
@@ -30,6 +30,6 @@ collections:
   #   version: feature/my-branch
 
 # to test using a Git repository
-  # - name: https://github.com/inverse-inc/ansible-packetfence.git
-  #   type: git
-  #   version: feature/rhel8
+  - name: https://github.com/inverse-inc/ansible-packetfence.git
+    type: git
+    version: feature/install-cluster

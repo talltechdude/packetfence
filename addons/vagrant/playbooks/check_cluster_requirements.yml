@@ -1,0 +1,9 @@
+- hosts: clusters
+  name: Check cluster requirements
+  become: True
+  gather_facts: True
+  collections:
+    - inverse_inc.packetfence
+
+  roles:
+    - role: packetfence_cluster

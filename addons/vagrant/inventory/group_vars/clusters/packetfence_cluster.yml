@@ -1,0 +1,2 @@
+---
+packetfence_cluster__rpm_repos: "{{ packetfence_install__centos['repos'] }}"
